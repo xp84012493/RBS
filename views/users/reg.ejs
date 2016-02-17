@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <script src='/javascripts/jquery-1.11.3.min.js'></script>
 </head>
 <body>
 
@@ -19,13 +20,13 @@
 
 <main class="packages-list-container" id="all-packages">
     <div class="container">
-        <form method="post" class="form-horizontal">
+        <form class="form-horizontal">
             <fieldset>
                 <legend>用户注册</legend>
                     <div class="form-group">
                         <label for="username" class="col-sm-2 control-label">用户名</label>
                         <div class="col-sm-3">
-                            <input type="email" class="form-control" id="username" placeholder="请输入用户名">
+                            <input class="form-control" id="username" placeholder="请输入用户名">
                         </div>
                     </div>
                     <div class="form-group">
@@ -42,7 +43,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-3">
-                            <button type="submit" class="btn btn-primary">注册</button>
+                            <button id="submitReg" type="submit" class="btn btn-primary">注册</button>
                         </div>
                     </div>
             </fieldset>
@@ -59,3 +60,16 @@
 
 </body>
 </html>
+
+<script type="text/javascript">
+    $(function() {
+
+        $("#submitReg").click(function(){
+            submitUser();
+        });
+
+        function submitUser(){
+            $.post( "reg/new", { 'name': "Leo" } );
+        }
+    });
+</script>
